@@ -1,37 +1,29 @@
 using UnityEngine;
-using Unity.VisualScripting;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
-    private PlayerControlInput inputActions;
-    private Vector3 inputVector;
-    private float speed = 5.0f;
+   
+    [SerializeField] private float speed = 5.0f;
+    [SerializeField]private float rotationSpeed = 10.0f;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
-        //Unity New Input
-        inputActions = new PlayerControlInput();
-
-        inputActions.Player.Move.performed += ctx => inputVector = ctx.ReadValue<Vector3>();
-        inputActions.Player.Move.canceled += ctx => inputVector = Vector3.zero;
     }
 
-    void FixedUpdate()
+    public void Move(Vector3 inputVector)
     {
+        Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.z);
+
+        //Moving
         rb.linearVelocity = new Vector3(inputVector.x * speed, rb.linearVelocity.y, inputVector.z * speed);
-    }
 
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
+        //Rotation
+        if (moveDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        }
     }
 }
