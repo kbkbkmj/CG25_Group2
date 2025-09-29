@@ -149,8 +149,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 330585546}
   - {fileID: 473491957}
+  - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &274325082
@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 473491954}
   - component: {fileID: 473491958}
   - component: {fileID: 473491959}
+  - component: {fileID: 473491960}
   m_Layer: 0
   m_Name: PlayerCube
   m_TagString: Untagged
@@ -588,6 +589,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &473491960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473491953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4661352d9e023d4e997e4c2de86b03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   rotationSpeed: 10
 --- !u!1 &832575517
 GameObject:

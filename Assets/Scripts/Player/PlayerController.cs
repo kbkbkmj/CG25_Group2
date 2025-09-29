@@ -3,12 +3,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private PlayerMovement playerMovement;
+    private PlayerRotation playerRotation;
+
     private PlayerControlInput inputActions;
     private Vector3 inputVector;
 
     void Awake()
     {
         playerMovement = GetComponentInChildren<PlayerMovement>();
+        playerRotation = GetComponentInChildren<PlayerRotation>();
 
         //Unity New Input
         inputActions = new PlayerControlInput();
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         playerMovement.Move(inputVector);
+        playerRotation.Rotate(inputVector);
     }
 
     private void OnEnable()
