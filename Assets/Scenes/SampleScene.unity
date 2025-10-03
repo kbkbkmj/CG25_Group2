@@ -614,7 +614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4661352d9e023d4e997e4c2de86b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 473491957}
   rotationSpeed: 10
 --- !u!1 &832575517
 GameObject:
@@ -788,6 +787,7 @@ GameObject:
   - component: {fileID: 1604679561}
   - component: {fileID: 1604679565}
   - component: {fileID: 1604679566}
+  - component: {fileID: 1604679567}
   m_Layer: 0
   m_Name: EnemyCube
   m_TagString: Untagged
@@ -925,6 +925,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   chasingTarget: {fileID: 473491958}
+--- !u!114 &1604679567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604679560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c9e3aedcb72d349a4332fec9ad8f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 473491957}
+  rotationSpeed: 10
 --- !u!1 &2016640504
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2016640505}
   - component: {fileID: 2016640506}
+  - component: {fileID: 2016640507}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -968,6 +983,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0aa821de56d932f49979acbb59f1c445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2016640507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016640504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17009766497b7f47ae66ffaf2257257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

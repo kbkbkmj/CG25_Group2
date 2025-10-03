@@ -2,20 +2,21 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private EnemyMovement enemyMovement;
+    private EnemyMovingAction enemyMovingAction;
 
-    private bool isLive = true;
+    private bool isAlive = true;
 
     private void Awake()
     {
-        enemyMovement = GetComponentInChildren<EnemyMovement>();
+        enemyMovingAction = GetComponentInChildren<EnemyMovingAction>();
     }
 
+    // Physics -> FixedUpdate
     void FixedUpdate()
     {
         //If not alive, Return
-        if (!isLive) return;
+        if (!isAlive) return;
         //If Alive, Do Action
-        enemyMovement.Move();
+        enemyMovingAction.GetMovingAction();
     }
 }

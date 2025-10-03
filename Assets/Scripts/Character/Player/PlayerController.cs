@@ -9,6 +9,7 @@ public class PlayerController : CharacterController
         playerInputAction = GetComponent<PlayerInputAction>();
     }
 
+    //Physics -> FixedUpdate
     void FixedUpdate()
     {
         playerInputAction.GetInputAction();

@@ -5,6 +5,7 @@ public class PlayerInputAction : MonoBehaviour
     private PlayerControlInput inputActions;
     private Vector3 inputVector;
 
+    private Rigidbody rb;
     private PlayerMovement playerMovement;
     private PlayerRotation playerRotation;
 
@@ -16,15 +17,15 @@ public class PlayerInputAction : MonoBehaviour
         inputActions.Player.Move.canceled += ctx => inputVector = Vector3.zero;
 
         //Get Component in Player Modeling
+        rb = GetComponentInChildren<Rigidbody>();
         playerMovement = GetComponentInChildren<PlayerMovement>();
         playerRotation = GetComponentInChildren<PlayerRotation>();
     }
 
-    // Update is called once per frame
     public void GetInputAction()
     {
-        playerMovement.Move(inputVector);
-        playerRotation.Rotate(inputVector);
+        playerMovement.Move(rb, inputVector);
+        playerRotation.Rotate(rb, inputVector);
     }
 
     private void OnEnable() => inputActions.Enable();

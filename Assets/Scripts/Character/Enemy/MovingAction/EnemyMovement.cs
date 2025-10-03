@@ -2,17 +2,10 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed;
+    private float speed = 5.0f;
     public Rigidbody chasingTarget;
 
-    private Rigidbody rb;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    public void Move()
+    public void Move(Rigidbody rb)
     {
         Vector3 dirVec = chasingTarget.position - rb.position;
         Vector3 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;

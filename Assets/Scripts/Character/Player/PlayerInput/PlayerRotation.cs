@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
-    [SerializeField] private Transform playerTransform;
     [SerializeField] private float rotationSpeed = 10.0f;
 
-    public void Rotate(Vector3 inputVector)
+    public void Rotate(Rigidbody rb, Vector3 inputVector)
     {
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.z);
 
@@ -13,7 +12,7 @@ public class PlayerRotation : MonoBehaviour
         if (moveDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
     }
 }
