@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
+    [SerializeField] private Transform playerTransform;
     [SerializeField] private float rotationSpeed = 10.0f;
 
     public void Rotate(Vector3 inputVector)
@@ -12,7 +13,7 @@ public class PlayerRotation : MonoBehaviour
         if (moveDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
     }
 }

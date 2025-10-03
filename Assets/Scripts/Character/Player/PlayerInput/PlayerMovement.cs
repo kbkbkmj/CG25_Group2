@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Move(Vector3 inputVector)
+    public void Move(Vector3 inputVector)   
     {
         //Moving
         rb.linearVelocity = new Vector3(inputVector.x * speed, rb.linearVelocity.y, inputVector.z * speed);
