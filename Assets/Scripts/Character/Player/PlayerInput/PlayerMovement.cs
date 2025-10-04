@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(Rigidbody rb, Vector3 inputVector)   
     {
-        //Moving
-        rb.linearVelocity = new Vector3(inputVector.x * speed, rb.linearVelocity.y, inputVector.z * speed);
+        // Moving
+        Vector3 dirVector = inputVector;
+        rb.linearVelocity = new Vector3(dirVector.x * speed, rb.linearVelocity.y, dirVector.z * speed);
     }
 }

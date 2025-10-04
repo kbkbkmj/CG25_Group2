@@ -11,12 +11,12 @@ public class PlayerInputAction : MonoBehaviour
 
     void Awake()
     {
-        //Unity New Input
+        // Unity New Input
         inputActions = new PlayerControlInput();
-        inputActions.Player.Move.performed += ctx => inputVector = ctx.ReadValue<Vector3>();
+        inputActions.Player.Move.performed += ctx => inputVector = ctx.ReadValue<Vector3>().normalized;
         inputActions.Player.Move.canceled += ctx => inputVector = Vector3.zero;
 
-        //Get Component in Player Modeling
+        // Get Component in Player Modeling
         rb = GetComponentInChildren<Rigidbody>();
         playerMovement = GetComponentInChildren<PlayerMovement>();
         playerRotation = GetComponentInChildren<PlayerRotation>();
@@ -26,6 +26,11 @@ public class PlayerInputAction : MonoBehaviour
     {
         playerMovement.Move(rb, inputVector);
         playerRotation.Rotate(rb, inputVector);
+    }
+
+    public Vector3 GetInputVector()
+    {
+        return inputVector;
     }
 
     private void OnEnable() => inputActions.Enable();

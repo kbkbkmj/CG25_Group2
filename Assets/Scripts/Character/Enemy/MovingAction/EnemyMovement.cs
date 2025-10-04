@@ -7,9 +7,12 @@ public class EnemyMovement : MonoBehaviour
 
     public void Move(Rigidbody rb)
     {
-        Vector3 dirVec = chasingTarget.position - rb.position;
-        Vector3 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
+        // Direction of Moving
+        Vector3 dirVector = chasingTarget.position - rb.position;
+        // Next Position
+        Vector3 nextVec = dirVector.normalized * speed * Time.fixedDeltaTime;
 
+        // Move
         rb.MovePosition(rb.position + nextVec);
     }
 }
