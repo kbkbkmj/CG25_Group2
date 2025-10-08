@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class InGameMapController : MonoBehaviour
 {
+    [SerializeField] private float tileSize = 100.0f;
+
     private void OnTriggerExit(Collider collider)
     {
         // If not Area, do NOT Action
@@ -11,16 +13,17 @@ public class InGameMapController : MonoBehaviour
         Vector3 playerPosition = GameManager.instance.playerMovement.transform.position;
         Vector3 tilePosition = transform.position;
 
-        // How Long Player Moved from Tile's Centre?
-        float diffX = Mathf.Abs(playerPosition.x - tilePosition.x);
-        float diffZ = Mathf.Abs(playerPosition.z - tilePosition.z);
+        // Where Player Moved from Tile's Centre?
+        float dirX = playerPosition.x - tilePosition.x;     // Lower than 0: Left , Larger than 0: Right
+        float dirZ = playerPosition.z - tilePosition.z;     // Lower than 0: Up , Larger than 0: Down
 
-        // Get Player Direction by Input Vector
-        Vector3 playerDir = GameManager.instance.playerInput.GetInputVector();
-        // If x of playerDir is smaller than 0, move Left
-        float dirX = (playerDir.x < 0) ? -1 : 1;
-        // If z of playerDir is smaller than 0, move backward
-        float dirZ = (playerDir.z) < 0 ? -1 : 1;
+        // How Long the Player Moved from Tile's Centre?
+        float diffX = Mathf.Abs(dirX);
+        float diffZ = Mathf.Abs(dirZ);
+
+        //Select Direction
+        dirX = (dirX > 0) ? 1 : -1;     // Larger than 0: Right, Lower than 0: Left
+        dirZ = (dirZ > 0) ? 1 : -1;     // Larger than 0: Down, Lower than 0: Up
 
         switch (transform.tag)
         {
@@ -28,18 +31,19 @@ public class InGameMapController : MonoBehaviour
             case "Ground":
                 Debug.Log("DiffX: " + diffX + ", DiffZ: " + diffZ);
 
-                // X move is Larger than Z move -> Move Right or Left
-                if (diffX > diffZ)
+                // X move is Larger than Tile Size -> Move Right or Left
+                if (diffX > tileSize)
                 {
                     // Move Up(or Down) | Size: two Tile
-                    transform.Translate(Vector3.right * dirX * (2 * 100));
+                    transform.Translate(Vector3.right * dirX * (tileSize * 2));
                 }
-                else if (diffX < diffZ)
+                // Z move is Larger than Tile Size -> Move Up or Down
+                if (diffZ > tileSize)
                 {
                     // Size: two Tile
-                    transform.Translate(Vector3.forward * dirZ * (2 * 100));
+                    transform.Translate(Vector3.forward * dirZ * (tileSize * 2));
                 }
-                break;
+                    break;
             case "Enemy":
                 break;
         }
