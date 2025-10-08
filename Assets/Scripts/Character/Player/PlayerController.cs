@@ -14,4 +14,9 @@ public class PlayerController : CharacterController
     {
         playerInputAction.GetInputAction();
     }
+
+    public PlayerInputAction GetPlayerInputAction()
+    {
+        return playerInputAction;
+    }
 }

@@ -15,4 +15,9 @@ public class EnemyMovement : MonoBehaviour
         // Move
         rb.MovePosition(rb.position + nextVec);
     }
+
+    private void OnEnable()
+    {
+        chasingTarget = GameManager.instance.playerController.GetPlayerInputAction().GetRigidbody();
+    }
 }

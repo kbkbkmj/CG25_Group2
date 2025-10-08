@@ -33,6 +33,21 @@ public class PlayerInputAction : MonoBehaviour
         return inputVector;
     }
 
+    public PlayerMovement GetPlayerMovement()
+    {
+        return playerMovement;
+    }
+
+    public PlayerRotation GetPlayerRotation()
+    {
+        return playerRotation;
+    }
+
+    public Rigidbody GetRigidbody()
+    {
+        return rb;
+    }
+
     private void OnEnable() => inputActions.Enable();
     private void OnDisable() => inputActions.Disable();
 }

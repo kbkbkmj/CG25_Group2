@@ -15,4 +15,9 @@ public class EnemyRotation : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
         rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
     }
+
+    private void OnEnable()
+    {
+        targetTransform = GameManager.instance.playerController.GetPlayerInputAction().GetRigidbody().GetComponent<Transform>();
+    }
 }
