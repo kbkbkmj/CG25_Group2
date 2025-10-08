@@ -3,6 +3,12 @@ using UnityEngine;
 public class InGameMapController : MonoBehaviour
 {
     [SerializeField] private float tileSize = 100.0f;
+    private Collider enemyCollider;
+
+    private void Awake()
+    {
+        enemyCollider = GetComponent<Collider>();
+    }
 
     private void OnTriggerExit(Collider collider)
     {
@@ -29,7 +35,9 @@ public class InGameMapController : MonoBehaviour
         {
             //Ground Location Change
             case "Ground":
-                Debug.Log("DiffX: " + diffX + ", DiffZ: " + diffZ);
+                //Debug.Log("DiffX: " + diffX + ", DiffZ: " + diffZ);
+                //Debug.Log($"GROUND - diffX: {diffX}, diffZ: {diffZ}, tileSize: {tileSize}");
+
 
                 // X move is Larger than Tile Size -> Move Right or Left
                 if (diffX > tileSize)
@@ -45,6 +53,25 @@ public class InGameMapController : MonoBehaviour
                 }
                     break;
             case "Enemy":
+                if (enemyCollider.enabled)
+                {
+                    Debug.Log("EXIT!!");
+                    Debug.Log($"ENEMY - diffX: {diffX}, diffZ: {diffZ}, tileSize: {tileSize}, dirX: {dirX}, dirZ: {dirZ}");
+
+
+                    // X move is Larger than Tile Size -> Move Right or Left
+                    if (diffX > tileSize / 2)
+                    {
+                        // Move Up(or Down) | Size: two Tile
+                        transform.Translate(Vector3.right * dirX * tileSize, Space.World);
+                    }
+                    // Z move is Larger than Tile Size -> Move Up or Down
+                    if (diffZ > tileSize / 2)
+                    {
+                        // Size: two Tile
+                        transform.Translate(Vector3.forward * dirZ * tileSize, Space.World);
+                    }
+                }
                 break;
         }
     }

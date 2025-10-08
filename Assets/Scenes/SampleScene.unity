@@ -450,9 +450,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 362454763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f53526be8c37e1741a0d96d37e6cd276, type: 3}
+  m_Script: {fileID: 11500000, guid: ae25016a3d4188a48902b20e320d2758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSize: 100
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,9 +907,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 899539847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f53526be8c37e1741a0d96d37e6cd276, type: 3}
+  m_Script: {fileID: 11500000, guid: ae25016a3d4188a48902b20e320d2758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSize: 100
 --- !u!1 &962635985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,9 +1030,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 962635985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f53526be8c37e1741a0d96d37e6cd276, type: 3}
+  m_Script: {fileID: 11500000, guid: ae25016a3d4188a48902b20e320d2758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSize: 100
 --- !u!1 &1203840284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,9 +1269,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1506842230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f53526be8c37e1741a0d96d37e6cd276, type: 3}
+  m_Script: {fileID: 11500000, guid: ae25016a3d4188a48902b20e320d2758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSize: 100
 --- !u!1 &1604679560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,11 +1286,12 @@ GameObject:
   - component: {fileID: 1604679562}
   - component: {fileID: 1604679561}
   - component: {fileID: 1604679565}
+  - component: {fileID: 1604679568}
   - component: {fileID: 1604679566}
   - component: {fileID: 1604679567}
   m_Layer: 0
   m_Name: EnemyCube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1434,6 +1439,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 473491957}
   rotationSpeed: 10
+--- !u!114 &1604679568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604679560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae25016a3d4188a48902b20e320d2758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileSize: 100
 --- !u!1 &1833349590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2016640505
 Transform:
   m_ObjectHideFlags: 0
