@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private float speed = 5.0f;
     public Rigidbody chasingTarget;
 
-    public void Move(Rigidbody rb)
+    public void Move(Rigidbody rb, float speed)
     {
         // Direction of Moving
         Vector3 dirVector = chasingTarget.position - rb.position;

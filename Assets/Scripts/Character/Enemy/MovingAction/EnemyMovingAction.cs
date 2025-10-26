@@ -8,14 +8,14 @@ public class EnemyMovingAction : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponentInChildren<Rigidbody>();
-        enemyMovement = GetComponentInChildren<EnemyMovement>();
-        enemyRotation = GetComponentInChildren<EnemyRotation>();
+        rb = GetComponent<Rigidbody>();
+        enemyMovement = GetComponent<EnemyMovement>();
+        enemyRotation = GetComponent<EnemyRotation>();
     }
 
-    public void GetMovingAction()
+    public void GetMovingAction(float speed)
     {
-        enemyMovement.Move(rb);
+        enemyMovement.Move(rb, speed);
         enemyRotation.Rotate(rb);
     }
 }
