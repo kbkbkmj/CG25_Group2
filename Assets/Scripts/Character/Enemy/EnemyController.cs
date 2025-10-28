@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
     public GameObject experienceGemPrefab;
 
     // ▼▼▼▼▼ 이 줄을 추가하세요! ▼▼▼▼▼
-    private Rigidbody childRb; // 자식의 Rigidbody를 저장할 변수
+    private Rigidbody rb; // Rigidbody를 저장할 변수
     // ▲▲▲▲▲ 여기까지 추가 ▲▲▲▲▲
 
     private void Awake()
@@ -32,8 +32,8 @@ public class EnemyController : MonoBehaviour
         meshFilter = GetComponent<MeshFilter>();
         enemyMovingAction = GetComponentInChildren<EnemyMovingAction>();
 
-        // ▼▼▼▼▼ 이 줄을 추가하세요! (자식의 Rigidbody 찾아오기) ▼▼▼▼▼
-        childRb = GetComponentInChildren<Rigidbody>();
+        // ▼▼▼▼▼ 이 줄을 추가하세요! (Rigidbody 찾아오기) ▼▼▼▼▼
+        rb = GetComponent<Rigidbody>();
         // ▲▲▲▲▲ 여기까지 추가 ▲▲▲▲▲
     }
 
@@ -90,11 +90,6 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    void Dead()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void Init(EnemyStatus status)
     {
         // If Respawn, Reset Everything
@@ -105,41 +100,42 @@ public class EnemyController : MonoBehaviour
         meshFilter.sharedMesh = meshes[status.ModelingType];
     }
 
+    /*
     public void TakeDamage(float damage)
     {
         if (!isAlive) return;
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Die();
+            Dead();
         }
     }
+    */
 
-    private void Die()
+    private void Dead()
     {
-        isAlive = false;
-
+        Debug.Log("Dead!");
         // 100% 드롭으로 테스트
         // if (Random.value < 0.5f) 
         // {
         DropExperienceGem();
         // }
 
+        isAlive = false;
+        GameManager.instance.poolManager.isSpawnable[0] = true;
         gameObject.SetActive(false);
     }
 
-    // ▼▼▼▼▼ 이 함수 내부를 수정하세요! (this.transform.position -> childRb.position) ▼▼▼▼▼
     private void DropExperienceGem()
     {
-        GameObject gem = GameManager.instance.poolManager.GetPrefab((int)GameManager.PoolType.ExperienceGem);
+        GameObject gem = GameManager.instance.poolManager.GetPrefab((int)PoolManager.PoolType.ExperienceGem);
 
         if (gem != null)
         {
-            // 젬 위치를 '부모' 위치가 아닌 '자식(Rigidbody)'의 위치로 설정
-            gem.transform.position = childRb.position;
+            // 젬 위치를 적 위치로 설정
+            gem.transform.position = rb.position;
         }
     }
-    // ▲▲▲▲▲ 여기까지 수정 ▲▲▲▲▲
 
     public bool IsAlive()
     {

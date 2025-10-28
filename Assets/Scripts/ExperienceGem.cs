@@ -11,7 +11,7 @@ public class ExperienceGem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // (알림) 여기에 플레이어의 경험치를 올려주는 코드를 나중에 추가하면 됩니다.
-            Debug.Log(experienceValue + " 경험치 획득!");
+            GameManager.instance.GetExp();
 
             // 젬 자신은 비활성화됩니다.
             gameObject.SetActive(false);

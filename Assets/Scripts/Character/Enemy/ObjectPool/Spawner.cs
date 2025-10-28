@@ -29,11 +29,18 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    // Enemy Spawn
     private void Spawn()
     {
-        GameObject enemy = GameManager.instance.poolManager.GetPrefab(0);   //Get From Pool
-        enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;     //0: Parent, 1~: Children
-        enemy.GetComponent<EnemyController>().Init(spawnData[level]);   // Set Enemy Data
+        bool isSpawnable = GameManager.instance.poolManager.isSpawnable[0];
+
+        if (isSpawnable)
+        {
+            GameObject enemy = GameManager.instance.poolManager.GetPrefab((int)PoolManager.PoolType.Enemy);   //Get From Pool
+            enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;     //0: Parent, 1~: Children
+            enemy.GetComponent<EnemyController>().Init(spawnData[level]);   // Set Enemy Data
+            //Debug.Log("Spawned");
+        }
     }
 }
 

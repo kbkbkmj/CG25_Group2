@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e699883afbf31764691e1fe674e6c2cd, type: 3}
-  m_Name: Item 2
+  m_Name: Item 1
   m_EditorClassIdentifier: 
-  itemType: 2
-  itemId: 2
-  itemName: Glove
-  itemDescription: 
-  itemIcon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  baseDamage: 4.5
-  baseCount: 3
+  itemType: 1
+  itemId: 1
+  itemName: Gun
+  itemDescription: Shooting Gun
+  itemIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  baseDamage: 3
+  baseCount: 0
   damages:
-  - 0.5
+  - 0.35
+  - 0.7
   - 1
-  - 1.5
+  - 1.4
   - 2
-  - 3
-  counts: 0100000001000000010000000100000002000000
-  projectile: {fileID: 0}
+  counts: 0100000001000000020000000300000004000000
+  projectile: {fileID: 7505886550845099228, guid: 756d02710f66fc140be5b063144be9b5, type: 3}
