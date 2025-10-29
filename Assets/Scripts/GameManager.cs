@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Header("# Game Object")]
     public PlayerController playerController;
     public PoolManager poolManager;
+    public WeaponLocation weaponLocation;
     [Header("# Game Control")]
     public float gameTime;
     public float maxGameTime = 2 * 10f;

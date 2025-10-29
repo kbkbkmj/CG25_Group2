@@ -12,10 +12,12 @@ public class Weapon : MonoBehaviour
 
     private float timer = 0f;    // For Remote
     PlayerController playerController;
+    WeaponLocation weaponLocation;
 
     private void Awake()
     {
         playerController = GameManager.instance.playerController;
+        weaponLocation = GameManager.instance.weaponLocation;
     }
 
     // How the Weapon Works?
@@ -56,7 +58,7 @@ public class Weapon : MonoBehaviour
     {
         //Basic Set
         name = "Weapon " + itemData.itemId;
-        transform.parent = playerController.transform;
+        transform.parent = weaponLocation.transform;
         transform.localPosition = Vector3.zero;
 
         id = itemData.itemId;
