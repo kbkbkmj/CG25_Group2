@@ -15,12 +15,7 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        playerController = GetComponentInParent<PlayerController>();
-    }
-
-    void Start()
-    {
-        Init();
+        playerController = GameManager.instance.playerController;
     }
 
     // How the Weapon Works?
@@ -61,6 +56,12 @@ public class Weapon : MonoBehaviour
     {
         //Basic Set
         name = "Weapon " + itemData.itemId;
+        transform.parent = playerController.transform;
+        transform.localPosition = Vector3.zero;
+
+        id = itemData.itemId;
+        damage = itemData.baseDamage;
+        count = itemData.baseCount;
 
         switch (id)
         {
@@ -93,7 +94,7 @@ public class Weapon : MonoBehaviour
     //Use for CloseWeapon
     private void Replacement()
     {
-        float distance = 2.0f;
+        float distance = 1.0f;
 
         for(int i = 0; i < count; i++)
         {

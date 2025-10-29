@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Moving
         Vector3 dirVector = inputVector;
+
         rb.linearVelocity = new Vector3(dirVector.x * speed, rb.linearVelocity.y, dirVector.z * speed);
     }
 }

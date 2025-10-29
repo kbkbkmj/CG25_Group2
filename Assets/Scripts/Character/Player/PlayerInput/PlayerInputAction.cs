@@ -17,9 +17,9 @@ public class PlayerInputAction : MonoBehaviour
         inputActions.Player.Move.canceled += ctx => inputVector = Vector3.zero;
 
         // Get Component in Player Modeling
-        rb = GetComponentInChildren<Rigidbody>();
-        playerMovement = GetComponentInChildren<PlayerMovement>();
-        playerRotation = GetComponentInChildren<PlayerRotation>();
+        rb = GetComponent<Rigidbody>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerRotation = GetComponent<PlayerRotation>();
     }
 
     public void GetInputAction()

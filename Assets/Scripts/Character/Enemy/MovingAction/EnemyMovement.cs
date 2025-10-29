@@ -17,6 +17,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        chasingTarget = GameManager.instance.playerController.GetPlayerInputAction().GetRigidbody();
+        chasingTarget = GameManager.instance.playerController.GetComponent<Rigidbody>();
     }
 }

@@ -8,7 +8,7 @@ public class PlayerController : CharacterController
     void Awake()
     {
         playerInputAction = GetComponent<PlayerInputAction>();
-        playerEnemyScan = GetComponentInChildren<PlayerEnemyScan>();
+        playerEnemyScan = GetComponent<PlayerEnemyScan>();
     }
 
     //Physics -> FixedUpdate

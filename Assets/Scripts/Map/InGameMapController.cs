@@ -16,7 +16,7 @@ public class InGameMapController : MonoBehaviour
         if (!collider.CompareTag("Area")) return;
 
         // Get Position of Player & Tile Position
-        Vector3 playerPosition = GameManager.instance.playerController.GetPlayerInputAction().GetRigidbody().transform.position;
+        Vector3 playerPosition = GameManager.instance.playerController.transform.position;
         Vector3 tilePosition = transform.position;
 
         // Where Player Moved from Tile's Centre?

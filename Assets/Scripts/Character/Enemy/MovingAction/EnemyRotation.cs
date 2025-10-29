@@ -18,6 +18,6 @@ public class EnemyRotation : MonoBehaviour
 
     private void Start()
     {
-        targetTransform = GameManager.instance.playerController.GetPlayerInputAction().GetRigidbody().GetComponent<Transform>();
+        targetTransform = GameManager.instance.playerController.GetComponent<Transform>();
     }
 }
