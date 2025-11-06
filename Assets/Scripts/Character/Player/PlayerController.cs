@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : CharacterController
+public class PlayerController : MonoBehaviour
 {
     private PlayerInputAction playerInputAction;
     private PlayerEnemyScan playerEnemyScan;

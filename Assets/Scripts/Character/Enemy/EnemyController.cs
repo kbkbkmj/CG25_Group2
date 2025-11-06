@@ -4,7 +4,7 @@ public class EnemyController : MonoBehaviour
 {
     private EnemyMovingAction enemyMovingAction;
 
-    [Header("Àû ½ºÅÈ")]
+    [Header("Enemy Status")]
     public float maxHealth = 10f;
     private float currentHealth;
     private bool isAlive = true;
@@ -122,7 +122,7 @@ public class EnemyController : MonoBehaviour
         // }
 
         isAlive = false;
-        GameManager.instance.poolManager.isSpawnable[0] = true;
+        GameManager.instance.poolManager.elements[(int)PoolManager.PoolType.Enemy].IsSpawnable = true;
         gameObject.SetActive(false);
     }
 

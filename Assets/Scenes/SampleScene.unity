@@ -2348,13 +2348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25d62a5e4174ab4cac614182877c307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 2691443022503293404, guid: c75d534b858654a4da999d9f1219f729, type: 3}
-  - {fileID: 2039977487015069834, guid: 9e10a5d2ab990f8498b7db2e88b714e3, type: 3}
-  - {fileID: 6498875452119777201, guid: ee511f5bc789c5a428f175e5e9afd677, type: 3}
-  - {fileID: 7505886550845099228, guid: 756d02710f66fc140be5b063144be9b5, type: 3}
-  poolSizes: 0a0000000a0000000a0000000a000000
-  isSpawnable: 01010101
+  elements:
+  - {fileID: 11400000, guid: b6658a8779b5f154fbdd41384f22c582, type: 2}
+  - {fileID: 11400000, guid: 02e6ba6af15577e46b1a700b6314dfe1, type: 2}
+  - {fileID: 11400000, guid: 40e52150ffc16554bb95cb4093ccfd2b, type: 2}
+  - {fileID: 11400000, guid: 473af0f10523ee347b5434ac9d47952e, type: 2}
 --- !u!4 &976497505
 Transform:
   m_ObjectHideFlags: 0

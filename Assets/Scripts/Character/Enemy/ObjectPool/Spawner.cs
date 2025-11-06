@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
     // Enemy Spawn
     private void Spawn()
     {
-        bool isSpawnable = GameManager.instance.poolManager.isSpawnable[0];
+        bool isSpawnable = GameManager.instance.poolManager.elements[(int)PoolManager.PoolType.Enemy].IsSpawnable;
 
         if (isSpawnable)
         {

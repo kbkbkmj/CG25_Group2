@@ -5,26 +5,31 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    //Variables for Saving Prefabs
-    public GameObject[] prefabs;
+    public PoolElement[] elements;
+    
     //Lists which act like Pool - 1 Pool for 1 Variable
     public List<GameObject>[] pools;
+
+    //Variables for Saving Prefabs
+    //public GameObject[] prefabs;
+    
     //Max Pool Size
-    public int[] poolSizes;
+    //public int[] poolSizes;
     //Is Any Spawnable Objects
-    public bool[] isSpawnable;
+    //public bool[] isSpawnable;
 
     public enum PoolType { Enemy, ExperienceGem, PlayerCloseWeapon, RemoteWeapon }
 
     void Awake()
     {
         // Create Pools
-        pools = new List<GameObject>[prefabs.Length];
+        pools = new List<GameObject>[elements.Length];
 
         // Reset Pools
         for (int i = 0; i < pools.Length; i++)
         {
             pools[i] = new List<GameObject>();
+            elements[i].IsSpawnable = true;
         }
     }
 
@@ -33,17 +38,17 @@ public class PoolManager : MonoBehaviour
         GameObject selected = null;
 
         // Not All Spawned yet -> Instantiate
-        if (pools[index].Count < poolSizes[index])
+        if (pools[index].Count < elements[index].PoolSize)
         {
             // Not Found -> Make New Object & Set as a Child
             if (selected == null)
             {
-                selected = Instantiate(prefabs[index], transform);
+                selected = Instantiate(elements[index].Prefab, transform);
                 pools[index].Add(selected);     //Register to the Pool
 
-                if (pools[index].Count >= poolSizes[index])
+                if (pools[index].Count >= elements[index].PoolSize)
                 {
-                    isSpawnable[index] = false;
+                    elements[index].IsSpawnable = false;
                 }
             }
         }
@@ -63,7 +68,7 @@ public class PoolManager : MonoBehaviour
                     int activeCount = pools[index].Count(obj => !obj.activeSelf);
                     if(activeCount == 0)
                     {
-                        isSpawnable[index] = false;
+                        elements[index].IsSpawnable = false;
                     }
                     break;
                 }
