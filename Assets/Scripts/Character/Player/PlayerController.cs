@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInputAction playerInputAction;
     private PlayerEnemyScan playerEnemyScan;
+    public GameObject weaponLocation;
 
     void Awake()
     {

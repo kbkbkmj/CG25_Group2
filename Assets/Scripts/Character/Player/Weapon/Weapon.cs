@@ -79,6 +79,8 @@ public class Weapon : MonoBehaviour
             default:
                 break;
         }
+
+        playerController.weaponLocation.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
 
     public void LevelUp(float damage, int count)
@@ -91,12 +93,14 @@ public class Weapon : MonoBehaviour
         {
             Replacement();
         }
+
+        playerController.weaponLocation.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
 
     //Use for CloseWeapon
     private void Replacement()
     {
-        float distance = 1.0f;
+        float distance = 3.0f;
 
         for(int i = 0; i < count; i++)
         {
@@ -140,11 +144,13 @@ public class Weapon : MonoBehaviour
 
             // Set Bullet Location & Rotation
             GameObject bullet = GameManager.instance.poolManager.GetPrefab((int)PoolManager.PoolType.RemoteWeapon);
-            bullet.transform.position = transform.position;
-            bullet.transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction);
+            if(bullet != null)
+            {
+                bullet.transform.position = transform.position;
+                bullet.transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction);
 
-            bullet.GetComponent<Bullet>().Init(damage, count, direction);
-
+                bullet.GetComponent<Bullet>().Init(damage, count, direction);
+            }
             
             // (Target is Null)  OR  (Target is Not Active)
             if (target == null || !target.gameObject.activeSelf)
