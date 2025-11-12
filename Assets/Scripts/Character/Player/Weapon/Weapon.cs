@@ -117,7 +117,7 @@ public class Weapon : MonoBehaviour
                 bullet.parent = transform;
             }
 
-            bullet.localPosition = Vector3.zero;
+            bullet.localPosition = Vector3.zero + Vector3.down; //down: satellite is up
             bullet.localRotation = Quaternion.identity;
             
             //Rotate Weapon & Replace
