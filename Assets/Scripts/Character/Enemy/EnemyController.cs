@@ -1,8 +1,11 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     private EnemyMovingAction enemyMovingAction;
+    private Collider collider;
 
     [Header("Enemy Status")]
     public float maxHealth = 10f;
@@ -16,6 +19,8 @@ public class EnemyController : MonoBehaviour
 
     public Mesh[] meshes;
     public Material[] materials;
+
+    WaitForFixedUpdate wait;
     
 
     [Header("아이템 프리팹")]
@@ -35,12 +40,17 @@ public class EnemyController : MonoBehaviour
         // ▼▼▼▼▼ 이 줄을 추가하세요! (Rigidbody 찾아오기) ▼▼▼▼▼
         rb = GetComponent<Rigidbody>();
         // ▲▲▲▲▲ 여기까지 추가 ▲▲▲▲▲
+
+        collider = GetComponent<Collider>();
+        wait = new WaitForFixedUpdate();
     }
 
     private void OnEnable()
     {
         currentHealth = maxHealth;
         isAlive = true;
+        collider.enabled = true;
+        rb.isKinematic = false;
     }
 
     void FixedUpdate()
@@ -77,6 +87,7 @@ public class EnemyController : MonoBehaviour
             if (hp > 0)
             {
                 //Hit Action
+                StartCoroutine(KnockBack());
             }
             //Die
             else
@@ -112,9 +123,18 @@ public class EnemyController : MonoBehaviour
     }
     */
 
+    IEnumerator KnockBack()
+    {
+        yield return wait;  //rest for next frame delay
+        Debug.Log("HIT!");
+        Vector3 playerPosition = GameManager.instance.playerController.transform.position;
+        Vector3 dirVector = transform.position - playerPosition;
+        rb.AddForce(dirVector.normalized * 6, ForceMode.Impulse);
+
+    }
+
     private void Dead()
     {
-        Debug.Log("Dead!");
         // 100% 드롭으로 테스트
         // if (Random.value < 0.5f) 
         // {
@@ -122,6 +142,9 @@ public class EnemyController : MonoBehaviour
         // }
 
         isAlive = false;
+        collider.enabled = false;
+        rb.isKinematic = true;
+        
         GameManager.instance.poolManager.elements[(int)PoolManager.PoolType.Enemy].IsSpawnable = true;
         gameObject.SetActive(false);
     }
@@ -136,6 +159,8 @@ public class EnemyController : MonoBehaviour
             gem.transform.position = rb.position;
         }
     }
+
+  
 
     public bool IsAlive()
     {

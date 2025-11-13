@@ -6,6 +6,6 @@ public class WeaponLocation : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = playerTransform.position;
+        transform.position = playerTransform.position + new Vector3(0, 0.5f, 0);
     }
 }
