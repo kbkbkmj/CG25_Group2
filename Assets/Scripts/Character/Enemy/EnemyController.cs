@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private EnemyMovingAction enemyMovingAction;
-    private Collider collider;
+    private Collider col;
 
     [Header("Enemy Status")]
     public float maxHealth = 10f;
@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         // ▲▲▲▲▲ 여기까지 추가 ▲▲▲▲▲
 
-        collider = GetComponent<Collider>();
+        col = GetComponent<Collider>();
         wait = new WaitForFixedUpdate();
     }
 
@@ -49,13 +49,17 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth = maxHealth;
         isAlive = true;
-        collider.enabled = true;
+        col.enabled = true;
         rb.isKinematic = false;
     }
 
     void FixedUpdate()
     {
-        if (!isAlive) return;
+
+        if (GameManager.instance.isGameStop || !isAlive)
+        {
+            return;
+        }
         //If Alive, Do Action
         enemyMovingAction.GetMovingAction(speed);
     }
@@ -142,7 +146,7 @@ public class EnemyController : MonoBehaviour
         // }
 
         isAlive = false;
-        collider.enabled = false;
+        col.enabled = false;
         rb.isKinematic = true;
         
         GameManager.instance.poolManager.elements[(int)PoolManager.PoolType.Enemy].IsSpawnable = true;
@@ -159,8 +163,6 @@ public class EnemyController : MonoBehaviour
             gem.transform.position = rb.position;
         }
     }
-
-  
 
     public bool IsAlive()
     {

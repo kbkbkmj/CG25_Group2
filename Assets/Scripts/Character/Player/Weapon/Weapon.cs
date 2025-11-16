@@ -23,6 +23,11 @@ public class Weapon : MonoBehaviour
     // How the Weapon Works?
     private void Update()
     {
+        if (GameManager.instance.isGameStop)
+        {
+            return;
+        }
+
         switch (id)
         {
             //Close Rotating Weapon : Rotate Weapon
@@ -140,7 +145,9 @@ public class Weapon : MonoBehaviour
             Transform target = playerController.GetPlayerEnemyScan().closestEnemy;
 
             // Calculating Direction
-            Vector3 direction = (target.position - transform.position).normalized;  
+            float dirX = target.position.x - transform.position.x;
+            float dirZ = target.position.z - transform.position.z;
+            Vector3 direction = new Vector3(dirX, 0, dirZ).normalized;  //(target.position - transform.position).normalized;
 
             // Set Bullet Location & Rotation
             GameObject bullet = GameManager.instance.poolManager.GetPrefab((int)PoolManager.PoolType.RemoteWeapon);

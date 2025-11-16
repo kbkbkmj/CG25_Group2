@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
     //Physics -> FixedUpdate
     void FixedUpdate()
     {
+        if (GameManager.instance.isGameStop)
+        {
+            return;
+        }
+
         playerInputAction.GetInputAction();
     }
 

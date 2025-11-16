@@ -15,7 +15,7 @@ MonoBehaviour:
   itemType: 3
   itemId: 3
   itemName: Shoe
-  itemDescription: Faster Move
+  itemDescription: '{0}% Faster Move'
   itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   baseDamage: 0
   baseCount: 0

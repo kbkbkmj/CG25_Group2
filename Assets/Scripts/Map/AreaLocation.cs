@@ -6,6 +6,11 @@ public class AreaLocation : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (GameManager.instance.isGameStop)
+        {
+            return;
+        }
+
         if (target != null)
         {
             transform.position = target.position;

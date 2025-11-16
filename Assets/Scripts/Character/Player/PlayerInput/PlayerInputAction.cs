@@ -8,6 +8,7 @@ public class PlayerInputAction : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovement playerMovement;
     private PlayerRotation playerRotation;
+    private PlayerAnim playerAnim;
 
     void Awake()
     {
@@ -20,12 +21,15 @@ public class PlayerInputAction : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerMovement = GetComponent<PlayerMovement>();
         playerRotation = GetComponent<PlayerRotation>();
+
+        playerAnim = GetComponent<PlayerAnim>();
     }
 
     public void GetInputAction()
     {
         playerMovement.Move(rb, inputVector);
         playerRotation.Rotate(rb, inputVector);
+        playerAnim.UpdateAnimation(inputVector);
     }
 
     public Vector3 GetInputVector()

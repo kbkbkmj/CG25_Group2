@@ -17,6 +17,11 @@ public class PlayerEnemyScan : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.isGameStop)
+        {
+            return;
+        }
+
         closestEnemy = FindEnemy();
     }
 

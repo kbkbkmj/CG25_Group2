@@ -9,7 +9,7 @@ public class ItemData : ScriptableObject
     public ItemType itemType;
     public int itemId;
     public string itemName;
-    public string itemDescription;
+    [TextArea] public string itemDescription;
     public Sprite itemIcon;
 
     [Header("# Level Data")]

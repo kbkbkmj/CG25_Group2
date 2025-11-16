@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public PoolManager poolManager;
     public WeaponLocation weaponLocation;
     [Header("# Game Control")]
+    public bool isGameStop;
     public float gameTime;
     public float maxGameTime = 2 * 10f;
     [Header("# Player Info")]
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int kill;
     public int exp;
     public int[] nextExp = { 3, 5, 10, 100, 150, 210, 280, 360, 450, 600 };
+    public LevelUp uiLevelUp;
 
 
     private void Awake()
@@ -29,10 +31,16 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         hp = maxHp;
+        uiLevelUp.Select(0);    //TEMP
     }
 
     void Update()
     {
+        if (isGameStop)
+        {
+            return;
+        }
+
         // Time Update
         gameTime += Time.deltaTime;
 
@@ -46,11 +54,23 @@ public class GameManager : MonoBehaviour
     {
         exp++;
 
-        if(exp == nextExp[level])
+        if (exp == nextExp[Mathf.Min(level, nextExp.Length - 1)])
         {
             level++;
             exp = 0;
-
+            uiLevelUp.Show();
         }
+    }
+
+    public void GameStop()
+    {
+        isGameStop = true;
+        Time.timeScale = 0;
+    }
+
+    public void GameResume()
+    {
+        isGameStop = false;
+        Time.timeScale = 1;
     }
 }
