@@ -26,12 +26,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        isGameStop = true;
     }
 
-    private void Start()
+    public void GameStart()
     {
         hp = maxHp;
         uiLevelUp.Select(0);    //TEMP
+        isGameStop = false;
     }
 
     void Update()
