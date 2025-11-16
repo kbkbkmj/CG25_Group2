@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public float gameTime;
     public float maxGameTime = 2 * 10f;
     [Header("# Player Info")]
-    public int hp;
-    public int maxHp = 100;
+    public float hp;
+    public float maxHp = 100;
     public int level;
     public int kill;
     public int exp;
@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     {
         hp = maxHp;
         uiLevelUp.Select(0);    //TEMP
+
+
         isGameStop = false;
     }
 

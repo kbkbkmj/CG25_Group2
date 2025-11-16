@@ -32,4 +32,16 @@ public class PlayerController : MonoBehaviour
     {
         return playerEnemyScan;
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (GameManager.instance.isGameStop)
+        {
+            return;
+        }
+
+        GameManager.instance.hp -= 10 * Time.deltaTime;
+
+        
+    }
 }
