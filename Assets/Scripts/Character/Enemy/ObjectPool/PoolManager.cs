@@ -18,7 +18,7 @@ public class PoolManager : MonoBehaviour
     //Is Any Spawnable Objects
     //public bool[] isSpawnable;
 
-    public enum PoolType { Enemy, ExperienceGem, PlayerCloseWeapon, RemoteWeapon }
+    public enum PoolType { Enemy, ExperienceGem, PlayerCloseWeapon, RemoteWeapon, Dagger }
 
     void Awake()
     {

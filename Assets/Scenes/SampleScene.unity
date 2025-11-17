@@ -390,6 +390,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1221782651}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &320376369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320376370}
+  - component: {fileID: 320376371}
+  m_Layer: 0
+  m_Name: DaggerWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &320376370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320376369}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1830165522}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320376371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320376369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914f3301257f226438dcaf821992df9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
+  damage: 2
+  count: 0
+  speed: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,6 +2401,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 02e6ba6af15577e46b1a700b6314dfe1, type: 2}
   - {fileID: 11400000, guid: 40e52150ffc16554bb95cb4093ccfd2b, type: 2}
   - {fileID: 11400000, guid: 473af0f10523ee347b5434ac9d47952e, type: 2}
+  - {fileID: 11400000, guid: 022c26a8e5852d44381261ee0451b805, type: 2}
 --- !u!4 &976497505
 Transform:
   m_ObjectHideFlags: 0
@@ -3952,7 +4001,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 320376370}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1830165523
@@ -4021,7 +4071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb892ecc64861b448a2ca0d4c072342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 726b949c96f977749beb17bd95fcabc5, type: 2}
+  itemData: {fileID: 11400000, guid: 8884e875ac6bde649a4d3f25be418470, type: 2}
   level: 0
   weapon: {fileID: 0}
 --- !u!114 &1833219032
@@ -4150,6 +4200,7 @@ MonoBehaviour:
   playerController: {fileID: 473491963}
   poolManager: {fileID: 976497504}
   weaponLocation: {fileID: 1830165523}
+  daggerWeapon: {fileID: 320376371}
   gameTime: 0
   maxGameTime: 20
   hp: 0
