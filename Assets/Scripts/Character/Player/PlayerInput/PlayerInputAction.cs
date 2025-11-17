@@ -27,6 +27,11 @@ public class PlayerInputAction : MonoBehaviour
 
     public void GetInputAction()
     {
+        if(rb.isKinematic == true)
+        {
+            return;
+        }
+
         playerMovement.Move(rb, inputVector);
         playerRotation.Rotate(rb, inputVector);
         playerAnim.UpdateAnimation(inputVector);

@@ -1,5 +1,7 @@
 // 이 코드 전체를 복사해서 GameManager.cs에 덮어쓰세요!
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     public int exp;
     public int[] nextExp = { 3, 5, 10, 100, 150, 210, 280, 360, 450, 600 };
     public LevelUp uiLevelUp;
+    public GameObject uiResult;
 
 
     private void Awake()
@@ -36,6 +39,25 @@ public class GameManager : MonoBehaviour
 
 
         isGameStop = false;
+    }
+
+    public void GameOver()
+    {
+        StartCoroutine(GameOverRoutine());
+    }
+    IEnumerator GameOverRoutine()
+    {
+        isGameStop = true;
+
+        yield return new WaitForSeconds(0.8f);
+
+        uiResult.SetActive(true);
+        GameStop();
+    }
+
+    public void GameRetry()
+    {
+        SceneManager.LoadScene(0);
     }
 
     void Update()

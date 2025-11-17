@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInputAction playerInputAction;
     private PlayerEnemyScan playerEnemyScan;
     public GameObject weaponLocation;
+    public Animator playerAnim;
 
     void Awake()
     {
@@ -33,14 +34,26 @@ public class PlayerController : MonoBehaviour
         return playerEnemyScan;
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionStay(Collision other)
     {
         if (GameManager.instance.isGameStop)
         {
             return;
         }
+        
 
-        GameManager.instance.hp -= 10 * Time.deltaTime;
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            GameManager.instance.hp -= 10 * Time.deltaTime;
+
+            if (GameManager.instance.hp < 0)
+            {
+                playerAnim.SetTrigger("Dead");
+                GameManager.instance.playerController.gameObject.transform.position = transform.position;
+                GameManager.instance.playerController.gameObject.GetComponent<Collider>().enabled = false;
+                GameManager.instance.playerController.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
+        }
 
         
     }
