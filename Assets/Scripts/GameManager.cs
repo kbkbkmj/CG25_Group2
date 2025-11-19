@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        Debug.Log("Start!");
+        Time.timeScale = 1;
+
         hp = maxHp;
         uiLevelUp.Select(0);    //TEMP
 
@@ -49,7 +52,7 @@ public class GameManager : MonoBehaviour
     {
         isGameStop = true;
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.5f);
 
         uiResult.SetActive(true);
         GameStop();
