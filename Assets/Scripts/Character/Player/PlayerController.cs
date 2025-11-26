@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInputAction playerInputAction;
     private PlayerEnemyScan playerEnemyScan;
     public GameObject weaponLocation;
-    public Animator playerAnim;
+    public PlayerAnim playerAnim;
 
     void Awake()
     {
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
             if (GameManager.instance.hp < 0)
             {
-                playerAnim.SetTrigger("Dead");
+                playerAnim.Dead();
                 GameManager.instance.playerController.gameObject.GetComponent<Collider>().enabled = false;
                 GameManager.instance.playerController.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 GameManager.instance.GameOver();

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public int exp;
     public int[] nextExp = { 3, 5, 10, 100, 150, 210, 280, 360, 450, 600 };
     public LevelUp uiLevelUp;
-    public GameObject uiResult;
+    public Result uiResult;
 
 
     private void Awake()
@@ -54,7 +54,23 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        uiResult.SetActive(true);
+        uiResult.gameObject.SetActive(true);
+        uiResult.Lose();
+        GameStop();
+    }
+
+    public void GameVictory()
+    {
+        StartCoroutine(GameVictoryRoutine());
+    }
+    IEnumerator GameVictoryRoutine()
+    {
+        isGameStop = true;
+
+        yield return new WaitForSeconds(1.5f);
+
+        uiResult.gameObject.SetActive(true);
+        uiResult.Win();
         GameStop();
     }
 
@@ -76,6 +92,9 @@ public class GameManager : MonoBehaviour
         if (gameTime > maxGameTime)
         {
             gameTime = maxGameTime;
+            playerController.playerAnim.Win();
+
+            GameVictory();
         }
     }
 

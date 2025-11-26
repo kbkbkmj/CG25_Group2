@@ -14,4 +14,14 @@ public class PlayerAnim : MonoBehaviour
     {
         anim.SetBool("isWalking", inputVector.sqrMagnitude > 0);
     }
+
+    public void Dead()
+    {
+        anim.SetTrigger("Dead");
+    }
+
+    public void Win()
+    {
+        anim.SetTrigger("Win");
+    }
 }
