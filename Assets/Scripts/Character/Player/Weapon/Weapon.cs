@@ -14,10 +14,17 @@ public class Weapon : MonoBehaviour
     PlayerController playerController;
     WeaponLocation weaponLocation;
 
+    Rigidbody playerRb;
+
     private void Awake()
     {
         playerController = GameManager.instance.playerController;
         weaponLocation = GameManager.instance.weaponLocation;
+        playerRb = GameManager.instance.playerController.GetPlayerInputAction().GetRigidbody();
+        if(playerRb != null)
+        {
+            Debug.Log("NOT NULL!");
+        }
     }
 
     // How the Weapon Works?
@@ -31,11 +38,11 @@ public class Weapon : MonoBehaviour
         switch (id)
         {
             //Close Rotating Weapon : Rotate Weapon
-            case 0:
+            case (int)ItemData.ItemType.Melee:
                 transform.Rotate(Vector3.up * speed * Time.deltaTime);
                 break;
             //Remote Weapon : Shoot Weapon
-            case 1:
+            case (int)ItemData.ItemType.Range:
                 timer += Time.deltaTime;
 
                 // CoolTime
@@ -43,6 +50,17 @@ public class Weapon : MonoBehaviour
                 {
                     timer = 0f;
                     Shoot();
+                }
+                break;
+            //Dagger : Shoot Dagger to Forward
+            case (int)ItemData.ItemType.Dagger:
+                timer += Time.deltaTime;
+
+                // CoolTime
+                if (timer > speed)
+                {
+                    timer = 0f;
+                    Shoot_Dagger();
                 }
                 break;
             default:
@@ -62,24 +80,28 @@ public class Weapon : MonoBehaviour
     public void Init(ItemData itemData)
     {
         //Basic Set
-        name = "Weapon " + itemData.itemId;
+        name = "Weapon " + (int)itemData.itemType;
         transform.parent = weaponLocation.transform;
         transform.localPosition = Vector3.zero;
 
-        id = itemData.itemId;
+        id = (int)itemData.itemType;
         damage = itemData.baseDamage;
         count = itemData.baseCount;
 
         switch (id)
         {
             //Close Rotating Weapon
-            case 0:
+            case (int)ItemData.ItemType.Melee:
                 speed = 150;
                 Replacement();
                 break;
             //Remote Weapon
-            case 1:
+            case (int)ItemData.ItemType.Range:
                 speed = 1.0f;
+                break;
+            //Dagger
+            case (int)ItemData.ItemType.Dagger:
+                speed = 1.2f;
                 break;
             default:
                 break;
@@ -94,7 +116,7 @@ public class Weapon : MonoBehaviour
         this.count += count;
 
         //Close Rotating Weapon
-        if (id == 0)
+        if (id == (int)ItemData.ItemType.Melee)
         {
             Replacement();
         }
@@ -166,6 +188,20 @@ public class Weapon : MonoBehaviour
                 return;
             }
             
+        }
+    }
+
+    private void Shoot_Dagger()
+    {
+        Vector3 direction = playerRb.transform.forward;
+
+        GameObject bullet = GameManager.instance.poolManager.GetPrefab((int)PoolManager.PoolType.Dagger);
+        if(bullet != null)
+        {
+            bullet.transform.position = playerRb.transform.position;
+            bullet.transform.rotation = Quaternion.LookRotation(direction);
+
+            bullet.GetComponent<Bullet>().Init(damage, count, direction);
         }
     }
 }

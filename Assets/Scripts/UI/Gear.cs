@@ -8,7 +8,7 @@ public class Gear : MonoBehaviour
     public void Init(ItemData itemData)
     {
         //Basic Set
-        name = "Gear" + itemData.itemId;
+        name = "Gear" + (int)itemData.itemType;
         transform.parent = GameManager.instance.playerController.weaponLocation.transform;
         transform.localPosition = Vector3.zero;
 

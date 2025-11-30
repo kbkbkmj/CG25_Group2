@@ -34,6 +34,7 @@ public class Item : MonoBehaviour
         {
             case ItemData.ItemType.Melee:
             case ItemData.ItemType.Range:
+            case ItemData.ItemType.Dagger:
                 textDesc.text = string.Format(itemData.itemDescription, itemData.damages[level] * 100, itemData.counts[level]);
                 break;
             case ItemData.ItemType.Glove:
@@ -52,6 +53,7 @@ public class Item : MonoBehaviour
         {
             case ItemData.ItemType.Melee:
             case ItemData.ItemType.Range:
+            case ItemData.ItemType.Dagger:
                 if(level == 0)
                 {
                     GameObject newWeapon = new GameObject();
