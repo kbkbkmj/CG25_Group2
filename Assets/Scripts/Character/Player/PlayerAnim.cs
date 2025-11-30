@@ -19,9 +19,4 @@ public class PlayerAnim : MonoBehaviour
     {
         anim.SetTrigger("Dead");
     }
-
-    public void Win()
-    {
-        anim.SetTrigger("Win");
-    }
 }

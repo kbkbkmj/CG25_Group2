@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     {
         isGameStop = true;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
 
         uiResult.gameObject.SetActive(true);
         uiResult.Win();
@@ -92,7 +92,6 @@ public class GameManager : MonoBehaviour
         if (gameTime > maxGameTime)
         {
             gameTime = maxGameTime;
-            playerController.playerAnim.Win();
 
             GameVictory();
         }
