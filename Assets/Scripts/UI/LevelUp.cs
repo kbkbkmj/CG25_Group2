@@ -61,7 +61,7 @@ public class LevelUp : MonoBehaviour
             // If Full Level, turn into HP
             if(randItem.level == randItem.itemData.damages.Length)
             {
-                items[4].gameObject.SetActive(true);
+                items[(int)ItemData.ItemType.Heal].gameObject.SetActive(true);
             }
             // Else, Activate
             else

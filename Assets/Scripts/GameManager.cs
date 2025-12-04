@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
 
         hp = maxHp;
-        uiLevelUp.Select(0);    //TEMP
+        uiLevelUp.Select((int)ItemData.ItemType.Melee);    //TEMP
 
 
         isGameStop = false;

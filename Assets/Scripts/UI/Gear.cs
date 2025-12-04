@@ -47,11 +47,13 @@ public class Gear : MonoBehaviour
             switch (weapon.id)
             {
                 //Close Weapon
-                case 0:
+                case (int)ItemData.ItemType.Melee:
                     weapon.speed = 150 + (150 * rate);
                     break;
                 //Remote Weapon
-                case 1:
+                case (int)ItemData.ItemType.Range:
+                //Dagger Weapon
+                case (int)ItemData.ItemType.Dagger:
                     weapon.speed = 0.5f * (1.0f - rate);
                     break;
                 default:
