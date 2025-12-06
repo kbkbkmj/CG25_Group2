@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Item 0
   m_EditorClassIdentifier: 
   itemType: 0
-  itemId: 0
   itemName: Satellite
   itemDescription: 'Upgrade {0}% Damage
 
     Add {1} Satellite'
-  itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: 2fce0fbc50a5de640a06820d487bbb09, type: 3}
   baseDamage: 4.5
   baseCount: 3
   damages:

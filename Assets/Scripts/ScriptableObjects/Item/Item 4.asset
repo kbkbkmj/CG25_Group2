@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Item 4
   m_EditorClassIdentifier: 
   itemType: 5
-  itemName: Fuel
+  itemName: Repair
   itemDescription: Heal Whole Health
-  itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: 864d66b3d55af414d8214b0adee5c708, type: 3}
   baseDamage: 0
   baseCount: 0
   damages:

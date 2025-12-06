@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Item 2
   m_EditorClassIdentifier: 
   itemType: 3
-  itemName: Glove
+  itemName: Overdrive
   itemDescription: '{0}% Faster Shooting'
-  itemIcon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: 2d42db4139daff948b833955168a0e0d, type: 3}
   baseDamage: 0
   baseCount: 0
   damages:
