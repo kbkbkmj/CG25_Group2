@@ -144,7 +144,7 @@ public class Weapon : MonoBehaviour
                 bullet.parent = transform;
             }
 
-            bullet.localPosition = Vector3.zero + Vector3.down; //down: satellite is up
+            bullet.localPosition = Vector3.zero;
             bullet.localRotation = Quaternion.identity;
             
             //Rotate Weapon & Replace
@@ -198,8 +198,9 @@ public class Weapon : MonoBehaviour
         GameObject bullet = GameManager.instance.poolManager.GetPrefab((int)PoolManager.PoolType.Dagger);
         if(bullet != null)
         {
-            bullet.transform.position = playerRb.transform.position;
+            bullet.transform.position = playerRb.transform.position + new Vector3(0, 1, 0);
             bullet.transform.rotation = Quaternion.LookRotation(direction);
+            bullet.transform.Rotate(Vector3.right, 90);
 
             bullet.GetComponent<Bullet>().Init(damage, count, direction);
         }

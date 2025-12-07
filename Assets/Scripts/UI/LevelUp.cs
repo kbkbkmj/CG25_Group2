@@ -61,6 +61,7 @@ public class LevelUp : MonoBehaviour
             // If Full Level, turn into HP
             if(randItem.level == randItem.itemData.damages.Length)
             {
+                Debug.Log("HP_TURN");
                 items[(int)ItemData.ItemType.Heal].gameObject.SetActive(true);
             }
             // Else, Activate

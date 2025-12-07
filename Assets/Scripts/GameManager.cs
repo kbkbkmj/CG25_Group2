@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("# Game Control")]
     public bool isGameStop;
     public float gameTime;
-    public float maxGameTime = 2 * 10f;
+    public float maxGameTime = 2 * 60f;
     [Header("# Player Info")]
     public float hp;
     public float maxHp = 100;

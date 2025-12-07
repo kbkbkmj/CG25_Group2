@@ -130,11 +130,10 @@ public class EnemyController : MonoBehaviour
     IEnumerator KnockBack()
     {
         yield return wait;  //rest for next frame delay
-        Debug.Log("HIT!");
+
         Vector3 playerPosition = GameManager.instance.playerController.transform.position;
         Vector3 dirVector = transform.position - playerPosition;
         rb.AddForce(dirVector.normalized * 6, ForceMode.Impulse);
-
     }
 
     private void Dead()
