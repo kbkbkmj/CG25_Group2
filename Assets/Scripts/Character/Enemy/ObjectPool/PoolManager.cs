@@ -29,6 +29,15 @@ public class PoolManager : MonoBehaviour
         for (int i = 0; i < pools.Length; i++)
         {
             pools[i] = new List<GameObject>();
+            
+            //Instantiate + Active: False
+            for(int j=0; j < elements[i].PoolSize; j++)
+            {
+                GameObject obj = Instantiate(elements[i].Prefab, transform);
+                obj.SetActive(false);
+                pools[i].Add(obj);
+            }
+
             elements[i].IsSpawnable = true;
         }
     }
@@ -37,6 +46,7 @@ public class PoolManager : MonoBehaviour
     {
         GameObject selected = null;
 
+        /*
         // Not All Spawned yet -> Instantiate
         if (pools[index].Count < elements[index].PoolSize)
         {
@@ -52,26 +62,30 @@ public class PoolManager : MonoBehaviour
                 }
             }
         }
+
         // All Spawned -> Select from Pool
         else
         {
-            // Find Disabled Object
-            foreach (GameObject item in pools[index])
-            {
-                // Found "Not Active" -> Select!
-                if (!item.activeSelf)
-                {
-                    selected = item;
-                    selected.SetActive(true);
+            
+        }
+        */
 
-                    // Count how many avaliable objects (if zero, cannot use pool)
-                    int activeCount = pools[index].Count(obj => !obj.activeSelf);
-                    if(activeCount == 0)
-                    {
-                        elements[index].IsSpawnable = false;
-                    }
-                    break;
+        // Find Disabled Object
+        foreach (GameObject item in pools[index])
+        {
+            // Found "Not Active" -> Select!
+            if (!item.activeSelf)
+            {
+                selected = item;
+                selected.SetActive(true);
+
+                // Count how many avaliable objects (if zero, cannot use pool)
+                int activeCount = pools[index].Count(obj => !obj.activeSelf);
+                if (activeCount == 0)
+                {
+                    elements[index].IsSpawnable = false;
                 }
+                break;
             }
         }
 
