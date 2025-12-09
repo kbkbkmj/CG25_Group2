@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Enemy_tmp
   m_EditorClassIdentifier: 
   prefab: {fileID: 2691443022503293404, guid: c75d534b858654a4da999d9f1219f729, type: 3}
-  poolSize: 10
+  poolSize: 100
   isSpawnable: 0

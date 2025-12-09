@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         Debug.Log("Start!");
+        AudioManager.instance.PlayBgm(true);
         Time.timeScale = 1;
 
         hp = maxHp;
@@ -42,25 +43,36 @@ public class GameManager : MonoBehaviour
 
 
         isGameStop = false;
+
+        Debug.Log("Sound SELECT!");
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
 
     public void GameOver()
     {
+        AudioManager.instance.PlayBgm(false);
+
         StartCoroutine(GameOverRoutine());
     }
     IEnumerator GameOverRoutine()
     {
         isGameStop = true;
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Lose);
 
         yield return new WaitForSeconds(1.5f);
 
         uiResult.gameObject.SetActive(true);
         uiResult.Lose();
         GameStop();
+
+        Debug.Log("Sound LOSE!");
+        
     }
 
     public void GameVictory()
     {
+        AudioManager.instance.PlayBgm(false);
+
         StartCoroutine(GameVictoryRoutine());
     }
     IEnumerator GameVictoryRoutine()
@@ -72,10 +84,14 @@ public class GameManager : MonoBehaviour
         uiResult.gameObject.SetActive(true);
         uiResult.Win();
         GameStop();
+
+        Debug.Log("Sound WIN!");
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Win);
     }
 
     public void GameRetry()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
         SceneManager.LoadScene(0);
     }
 

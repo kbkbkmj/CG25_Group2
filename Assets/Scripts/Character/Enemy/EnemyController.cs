@@ -85,7 +85,9 @@ public class EnemyController : MonoBehaviour
         {
             //Damage HP
             hp -= other.GetComponent<Bullet>().damage;
-            Debug.Log("Hit!");
+
+            Debug.Log("Sound HIT!");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
 
             //Alive
             if (hp > 0)
@@ -99,6 +101,12 @@ public class EnemyController : MonoBehaviour
                 Dead();
                 GameManager.instance.kill++;
                 GameManager.instance.GetExp();
+
+                if (!GameManager.instance.isGameStop)
+                {
+                    Debug.Log("Sound DEAD!");
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
+                }
             }
         }
 
@@ -138,11 +146,10 @@ public class EnemyController : MonoBehaviour
 
     private void Dead()
     {
-        // 100% 드롭으로 테스트
-        // if (Random.value < 0.5f) 
-        // {
-        DropExperienceGem();
-        // }
+        if (UnityEngine.Random.value < 0.4f) 
+        {
+            DropExperienceGem();
+        }
 
         isAlive = false;
         col.enabled = false;

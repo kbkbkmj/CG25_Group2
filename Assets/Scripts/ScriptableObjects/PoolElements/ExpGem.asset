@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ExpGem
   m_EditorClassIdentifier: 
   prefab: {fileID: 2039977487015069834, guid: 9e10a5d2ab990f8498b7db2e88b714e3, type: 3}
-  poolSize: 10
+  poolSize: 100
   isSpawnable: 1

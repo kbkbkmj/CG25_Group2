@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RemoteWeapon
   m_EditorClassIdentifier: 
   prefab: {fileID: 7505886550845099228, guid: 756d02710f66fc140be5b063144be9b5, type: 3}
-  poolSize: 10
+  poolSize: 50
   isSpawnable: 1

@@ -15,6 +15,22 @@ public class ExperienceGem : MonoBehaviour
 
             // 젬 자신은 비활성화됩니다.
             gameObject.SetActive(false);
+
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.GetGem);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Not Area -> return
+        if ((!other.CompareTag("Area")))
+        {
+            return;
+        }
+        // Out of Area
+        else
+        {
+            gameObject.SetActive(false);
         }
     }
 }

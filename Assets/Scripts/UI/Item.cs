@@ -101,5 +101,8 @@ public class Item : MonoBehaviour
         {
             GetComponent<Button>().interactable = false;
         }
+
+        //Debug.Log("Sound LEVUP!");
+        //AudioManager.instance.PlaySfx(AudioManager.Sfx.LevelUp);
     }
 }

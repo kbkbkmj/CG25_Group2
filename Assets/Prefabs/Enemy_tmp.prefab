@@ -157,10 +157,14 @@ MonoBehaviour:
   hp: 0
   speed: 0
   meshes:
+  - {fileID: 4300000, guid: 8c7e90cd8231f9a4c9936aafd7ec1fed, type: 3}
   - {fileID: 4300000, guid: d325e2478367e0447a82a4ede08a8b35, type: 3}
+  - {fileID: 4300000, guid: 18c800137884f7e41a1c548b743d113b, type: 3}
   - {fileID: 4300000, guid: c253b4e8b24a3e441b8388fa411c9b83, type: 3}
   materials:
+  - {fileID: 2100000, guid: 6dfdf1fd73e5c0940bbc7e670c81c50b, type: 2}
   - {fileID: 2100000, guid: c47d5d02a2d0bac418ec369b443375f7, type: 2}
+  - {fileID: 2100000, guid: 4cca2e086693e5c4fb4b4619ee94883b, type: 2}
   - {fileID: 2100000, guid: fea0a0511c5302644b2d9d8ec0cb8ef9, type: 2}
   experienceGemPrefab: {fileID: 0}
 --- !u!114 &7916748559465253018

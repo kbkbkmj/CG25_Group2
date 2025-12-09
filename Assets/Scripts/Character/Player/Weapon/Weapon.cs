@@ -187,7 +187,9 @@ public class Weapon : MonoBehaviour
                 gameObject.SetActive(false);
                 return;
             }
-            
+
+            Debug.Log("Sound RANGE!");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Range);
         }
     }
 
@@ -203,6 +205,9 @@ public class Weapon : MonoBehaviour
             bullet.transform.Rotate(Vector3.right, 90);
 
             bullet.GetComponent<Bullet>().Init(damage, count, direction);
+
+            Debug.Log("Sound DAGGER!");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Dagger);
         }
     }
 }
